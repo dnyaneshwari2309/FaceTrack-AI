@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FaceTrack AI | Smart Attendance</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#141e30,#243b55);
+min-height:100vh;
+padding:40px;
+color:white;
+}
+
+.header{
+text-align:center;
+margin-bottom:30px;
+}
+
+.header h1{
+font-size:3rem;
+margin-bottom:10px;
+}
+
+.header p{
+font-size:18px;
+color:#dcdcdc;
+}
+
+.video-box{
+max-width:900px;
+margin:auto;
+background:rgba(255,255,255,.1);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+box-shadow:0 8px 25px rgba(0,0,0,.3);
+}
+
+img{
+width:100%;
+border-radius:15px;
+border:3px solid white;
+}
+
+.status{
+text-align:center;
+margin-top:20px;
+font-size:22px;
+font-weight:bold;
+color:#00ff99;
+}
+
+.warning{
+background:#ff4d4d;
+padding:25px;
+border-radius:15px;
+text-align:center;
+font-size:22px;
+line-height:1.8;
+}
+
+.back{
+display:block;
+text-align:center;
+margin-top:25px;
+color:white;
+text-decoration:none;
+font-size:18px;
+}
+
+.back:hover{
+text-decoration:underline;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>📸 Smart Attendance Scanner</h1>
+<p>Real-Time Face Recognition Monitoring</p>
+</div>
+
+<div class="video-box">
+
+{% if model_ready %}
+
+<img src="{{ url_for('video_feed_attendance') }}">
+
+<div class="status">
+🟢 Camera Active
+</div>
+
+{% else %}
+
+<div class="warning">
+⚠️ No Trained AI Model Found
+<br><br>
+Please complete the following steps:
+<br>
+1️⃣ Enroll a Student
+<br>
+2️⃣ Train the AI Model
+<br>
+3️⃣ Return to Smart Attendance
+</div>
+
+{% endif %}
+
+</div>
+
+<a class="back" href="/">
+← Back to Dashboard
+</a>
+
+</body>
+</html>
