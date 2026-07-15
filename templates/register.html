@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FaceTrack AI | Student Enrollment</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI',sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#141e30,#243b55);
+        }
+
+        .card{
+            width:500px;
+            padding:40px;
+            border-radius:20px;
+            background:rgba(255,255,255,0.1);
+            backdrop-filter:blur(15px);
+            box-shadow:0 8px 30px rgba(0,0,0,0.3);
+            color:white;
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        label{
+            display:block;
+            margin-bottom:8px;
+            font-weight:600;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:10px;
+            margin-bottom:20px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:10px;
+            background:#00c6ff;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        button:hover{
+            transform:translateY(-3px);
+        }
+
+        .camera-box{
+            margin-top:30px;
+            text-align:center;
+        }
+
+        img{
+            width:100%;
+            border-radius:15px;
+            margin-top:15px;
+            border:3px solid white;
+        }
+
+        .status{
+            text-align:center;
+            margin-top:15px;
+            font-size:18px;
+            color:#00ff99;
+        }
+
+        .back{
+            display:block;
+            text-align:center;
+            margin-top:20px;
+            color:white;
+            text-decoration:none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>👤 Enroll New Student</h1>
+
+    <form method="POST">
+
+        <label>Student ID</label>
+        <input type="text"
+               name="student_id"
+               placeholder="Enter Student ID"
+               required>
+
+        <label>Full Name</label>
+        <input type="text"
+               name="name"
+               placeholder="Enter Student Name"
+               required>
+
+        <button type="submit">
+            📸 Start Face Capture
+        </button>
+
+    </form>
+
+    {% if started %}
+
+    <div class="camera-box">
+
+        <h2>Capturing Face Samples...</h2>
+
+        <img src="{{ url_for('video_feed_register') }}">
+
+        <div class="status">
+            Collecting face images...
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    <a href="/" class="back">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>
